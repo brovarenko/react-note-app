@@ -1,39 +1,22 @@
-import React from 'react';
-
+import React, { useState } from 'react';
+import NoteFormModal from '../add-form/note-form';
 import NoteItem from '../note-item/note-item';
+import { useAppSelector } from '../../hooks/use-app-selector.hook';
+import { selectNotes } from '../../store/notes/reducer';
 import styles from './styles.module.css';
 
-const notes = [
-  {
-    id: 1,
-    name: 'Books',
-    createdAt: 'July 27, 2023',
-    content: 'Buy book',
-    category: 'Task',
-    dates: [],
-    archived: false,
-  },
-  {
-    id: 2,
-    name: 'Books',
-    createdAt: 'July 27, 2023',
-    content: 'Buy book 04.04.2020',
-    category: 'Idea',
-    dates: ['04/04/2020'],
-    archived: false,
-  },
-  {
-    id: 3,
-    name: 'Books',
-    createdAt: 'July 26, 2023',
-    content: 'Project discussion',
-    category: 'Task',
-    dates: [],
-    archived: false,
-  },
-];
-
 const NotesList: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const notes = useAppSelector(selectNotes);
+
+  const handleAddNote = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className={styles.notesList}>
       <div className={styles.notesListHeader}>
@@ -46,6 +29,8 @@ const NotesList: React.FC = () => {
       {notes.map((note) => (
         <NoteItem key={note.id} note={note} />
       ))}
+      <button onClick={handleAddNote}>Create Note</button>
+      {isModalOpen && <NoteFormModal closeModal={closeModal} />}
     </div>
   );
 };

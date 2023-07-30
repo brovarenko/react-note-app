@@ -74,8 +74,10 @@ const NoteFormModal: React.FC<NoteFormModalProps> = ({ note, closeModal }) => {
               </option>
             ))}
           </select>
-          <button type='submit'>{note ? 'Save' : 'Add'}</button>
-          <button type='button' onClick={closeModal}>
+          <button className={styles.btn} type='submit'>
+            {note ? 'Save' : 'Add'}
+          </button>
+          <button className={styles.btn} type='button' onClick={closeModal}>
             Cancel
           </button>
         </form>

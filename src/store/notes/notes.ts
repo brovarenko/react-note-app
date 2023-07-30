@@ -6,7 +6,7 @@ export const notesData = [
     content: 'Buy book',
     category: 'Task',
     dates: [],
-    archived: false,
+    archived: true,
   },
   {
     id: 2,

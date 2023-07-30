@@ -1,4 +1,3 @@
-// features/notes/notesSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import { Note, notesData } from './notes';
@@ -28,10 +27,17 @@ const notesSlice = createSlice({
     deleteNote: (state, action: PayloadAction<number>) => {
       state.notes = state.notes.filter((note) => note.id !== action.payload);
     },
+    archiveNote: (state, action: PayloadAction<Note>) => {
+      const { id } = action.payload;
+      state.notes = state.notes.map((note) =>
+        note.id === id ? { ...note, archived: !note.archived } : note
+      );
+    },
   },
 });
 
-export const { addNote, editNote, deleteNote } = notesSlice.actions;
+export const { addNote, editNote, deleteNote, archiveNote } =
+  notesSlice.actions;
 export const { reducer } = notesSlice;
 
 export const selectNotes = (state: RootState) => state.notes.notes;

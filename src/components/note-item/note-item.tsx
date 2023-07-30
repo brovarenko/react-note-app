@@ -1,5 +1,6 @@
 import React from 'react';
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
+import { HiArchive } from 'react-icons/hi';
 import styles from './styles.module.css';
 
 export interface Note {
@@ -16,9 +17,15 @@ interface NoteItemProps {
   note: Note;
   onDelete: (id: number) => void;
   onEdit: (note: Note) => void;
+  onArchive: (note: Note) => void;
 }
 
-const NoteItem: React.FC<NoteItemProps> = ({ note, onDelete, onEdit }) => {
+const NoteItem: React.FC<NoteItemProps> = ({
+  note,
+  onDelete,
+  onEdit,
+  onArchive,
+}) => {
   const { name, createdAt, content, category, dates } = note;
 
   return (
@@ -28,12 +35,15 @@ const NoteItem: React.FC<NoteItemProps> = ({ note, onDelete, onEdit }) => {
       <div>{category}</div>
       <div>{content}</div>
       <div>{dates.join(',')}</div>
-      <div>
-        <button onClick={() => onDelete(note.id)}>
-          <AiFillDelete />
-        </button>
-        <button onClick={() => onEdit(note)}>
+      <div className={styles.btnGroup}>
+        <button className={styles.btn} onClick={() => onEdit(note)}>
           <AiFillEdit />
+        </button>
+        <button className={styles.btn} onClick={() => onArchive(note)}>
+          <HiArchive />
+        </button>
+        <button className={styles.btn} onClick={() => onDelete(note.id)}>
+          <AiFillDelete />
         </button>
       </div>
     </div>

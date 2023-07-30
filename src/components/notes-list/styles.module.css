@@ -1,11 +1,11 @@
 .notesListHeader {
   display: grid;
-  grid-template-columns: 1fr 1fr 2fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 2fr 1fr 1fr;
   background-color: rgb(175, 255, 182);
   min-width: 100%;
 }
 .notesListHeader div {
-  margin: 5px;
+  margin: 10px;
 }
 .notesList {
   display: flex;
@@ -14,4 +14,22 @@
   min-width: 70%;
   align-items: center;
   background-color: rgb(241, 241, 241);
+}
+
+.btn {
+  align-self: flex-end;
+  margin: 10px;
+  padding: 8px 16px;
+  background-color: #03b403;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #019c01;
+}
+
+.toggleBtn {
 }

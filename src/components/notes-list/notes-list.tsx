@@ -4,11 +4,12 @@ import NoteItem, { Note } from '../note-item/note-item';
 import { useAppSelector } from '../../hooks/use-app-selector.hook';
 import { selectNotes } from '../../store/notes/reducer';
 import { useAppDispatch } from '../../hooks/use-app-dispatch.hook';
-import { deleteNote } from '../../store/notes/reducer';
+import { deleteNote, archiveNote } from '../../store/notes/reducer';
 import styles from './styles.module.css';
 
 const NotesList: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showArchived, setShowArchived] = useState(false);
   const [selectedNote, setSelectedNote] = useState<Note | null>(null);
   const dispatch = useAppDispatch();
   const notes = useAppSelector(selectNotes);
@@ -31,8 +32,23 @@ const NotesList: React.FC = () => {
     setSelectedNote(null);
   };
 
+  const handleArchiveNote = (note: Note) => {
+    dispatch(archiveNote(note));
+  };
+
+  const handleToggleArchived = () => {
+    setShowArchived((prevShowArchived) => !prevShowArchived);
+  };
+
+  const filteredNotes = showArchived
+    ? notes.filter((note) => note.archived)
+    : notes.filter((note) => !note.archived);
+
   return (
     <div className={styles.notesList}>
+      <button className={styles.btn} onClick={handleToggleArchived}>
+        {showArchived ? 'Show active notes' : 'Show archived notes'}
+      </button>
       <div className={styles.notesListHeader}>
         <div>Name</div>
         <div>Created</div>
@@ -40,15 +56,18 @@ const NotesList: React.FC = () => {
         <div>Content</div>
         <div>Dates</div>
       </div>
-      {notes.map((note) => (
+      {filteredNotes.map((note) => (
         <NoteItem
           key={note.id}
           note={note}
           onDelete={handleDeleteNote}
           onEdit={handleEditNote}
+          onArchive={handleArchiveNote}
         />
       ))}
-      <button onClick={handleAddNote}>Create Note</button>
+      <button className={styles.btn} onClick={handleAddNote}>
+        Create Note
+      </button>
       {isModalOpen && (
         <NoteFormModal note={selectedNote} closeModal={closeModal} />
       )}

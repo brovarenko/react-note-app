@@ -5,9 +5,11 @@
   min-width: 100%;
   margin: 10px 0;
 }
+
 .notesListHeader div {
   margin: 10px;
 }
+
 .notesList {
   display: flex;
   flex-direction: column;
@@ -30,7 +32,4 @@
 
 .btn:hover {
   background-color: #019c01;
-}
-
-.toggleBtn {
 }

@@ -5,6 +5,7 @@ import { useAppSelector } from '../../hooks/use-app-selector.hook';
 import { selectNotes } from '../../store/notes/reducer';
 import { useAppDispatch } from '../../hooks/use-app-dispatch.hook';
 import { deleteNote, archiveNote } from '../../store/notes/reducer';
+
 import styles from './styles.module.css';
 
 const NotesList: React.FC = () => {

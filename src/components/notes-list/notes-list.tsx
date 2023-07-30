@@ -56,18 +56,22 @@ const NotesList: React.FC = () => {
         <div>Content</div>
         <div>Dates</div>
       </div>
-      {filteredNotes.map((note) => (
-        <NoteItem
-          key={note.id}
-          note={note}
-          onDelete={handleDeleteNote}
-          onEdit={handleEditNote}
-          onArchive={handleArchiveNote}
-        />
-      ))}
-      <button className={styles.btn} onClick={handleAddNote}>
-        Create Note
-      </button>
+      {filteredNotes.length !== 0
+        ? filteredNotes.map((note) => (
+            <NoteItem
+              key={note.id}
+              note={note}
+              onDelete={handleDeleteNote}
+              onEdit={handleEditNote}
+              onArchive={handleArchiveNote}
+            />
+          ))
+        : 'No Element'}
+      {!showArchived && (
+        <button className={styles.btn} onClick={handleAddNote}>
+          Create Note
+        </button>
+      )}
       {isModalOpen && (
         <NoteFormModal note={selectedNote} closeModal={closeModal} />
       )}

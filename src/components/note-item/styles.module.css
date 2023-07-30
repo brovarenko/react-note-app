@@ -3,6 +3,8 @@
   grid-template-columns: 1fr 1fr 1fr 2fr 1fr 1fr;
   margin: 10px;
   min-width: 100%;
+  margin: 5px;
+  background-color: rgb(212, 212, 212);
 }
 .note div {
   margin: 10px;
@@ -13,6 +15,7 @@
   padding: 0;
   margin: 5px;
   border: none;
+  background-color: rgb(212, 212, 212);
 }
 
 .btn:hover {
@@ -20,5 +23,12 @@
   color: rgb(160, 160, 160);
 }
 
-.btnGroup {
+.icon {
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+}
+
+.name {
+  display: flex;
 }

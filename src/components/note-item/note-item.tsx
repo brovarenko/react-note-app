@@ -1,6 +1,7 @@
 import React from 'react';
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import { HiArchive } from 'react-icons/hi';
+import { getCategoryIconUrl } from '../../helpers/get-category-url';
 import styles from './styles.module.css';
 
 export interface Note {
@@ -30,7 +31,14 @@ const NoteItem: React.FC<NoteItemProps> = ({
 
   return (
     <div className={styles.note}>
-      <div>{name}</div>
+      <div className={styles.name}>
+        <img
+          className={styles.icon}
+          src={getCategoryIconUrl(note.category)}
+          alt={note.category}
+        ></img>
+        <div>{name}</div>
+      </div>
       <div>{createdAt}</div>
       <div>{category}</div>
       <div>{content}</div>

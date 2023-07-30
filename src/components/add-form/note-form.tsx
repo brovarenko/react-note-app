@@ -10,10 +10,9 @@ interface NoteFormModalProps {
   closeModal: () => void;
 }
 
-const categories = ['Task', 'Random Thought', 'Idea'];
+export const categories = ['Task', 'Random Thought', 'Idea'];
 
 const NoteFormModal: React.FC<NoteFormModalProps> = ({ note, closeModal }) => {
-  console.log(note);
   const [name, setName] = useState(note ? note.name : '');
   const [content, setContent] = useState(note ? note.content : '');
   const [category, setCategory] = useState(
@@ -27,7 +26,13 @@ const NoteFormModal: React.FC<NoteFormModalProps> = ({ note, closeModal }) => {
     const newNote: Note = {
       id: note ? note.id : Date.now(),
       name,
-      createdAt: note ? note.createdAt : new Date().toLocaleDateString('en-US'),
+      createdAt: note
+        ? note.createdAt
+        : new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          }),
       content,
       category,
       dates: extractDatesFromContent(content),

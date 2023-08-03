@@ -6,8 +6,6 @@ import { selectNotes } from '../../store/notes/reducer';
 import { useAppDispatch } from '../../hooks/use-app-dispatch.hook';
 import { deleteNote, archiveNote } from '../../store/notes/reducer';
 
-import styles from './styles.module.css';
-
 const NotesList: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showArchived, setShowArchived] = useState(false);
@@ -46,16 +44,19 @@ const NotesList: React.FC = () => {
     : notes.filter((note) => !note.archived);
 
   return (
-    <div className={styles.notesList}>
-      <button className={styles.btn} onClick={handleToggleArchived}>
+    <div className='flex flex-col items-center m-20 w-70 bg-gray-300'>
+      <button
+        className='self-end m-5 px-3 py-2 bg-green-500 text-white rounded cursor-pointer hover:bg-green-600'
+        onClick={handleToggleArchived}
+      >
         {showArchived ? 'Show active notes' : 'Show archived notes'}
       </button>
-      <div className={styles.notesListHeader}>
-        <div>Name</div>
-        <div>Created</div>
-        <div>Category</div>
-        <div>Content</div>
-        <div>Dates</div>
+      <div className='grid grid-cols-6 bg-green-300 w-full'>
+        <div className='m-5'>Name</div>
+        <div className='m-5'>Created</div>
+        <div className='m-5'>Category</div>
+        <div className='m-5 col-span-2'>Content</div>
+        <div className='m-5'>Dates</div>
       </div>
       {filteredNotes.length !== 0
         ? filteredNotes.map((note) => (
@@ -69,7 +70,10 @@ const NotesList: React.FC = () => {
           ))
         : 'No Element'}
       {!showArchived && (
-        <button className={styles.btn} onClick={handleAddNote}>
+        <button
+          className='self-end m-5 px-3 py-2 bg-green-500 text-white rounded cursor-pointer hover:bg-green-600'
+          onClick={handleAddNote}
+        >
           Create Note
         </button>
       )}

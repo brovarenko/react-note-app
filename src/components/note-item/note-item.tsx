@@ -30,7 +30,7 @@ const NoteItem: React.FC<NoteItemProps> = ({
 
   return (
     <div className='grid grid-cols-7 m-3 w-full bg-gray-300'>
-      <div className='flex m-3'>
+      <div className='lg:flex m-3'>
         <img
           className='w-8 h-8 mr-2'
           src={getCategoryIconUrl(note.category)}

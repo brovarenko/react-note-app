@@ -51,12 +51,12 @@ const NotesList: React.FC = () => {
       >
         {showArchived ? 'Show active notes' : 'Show archived notes'}
       </button>
-      <div className='grid grid-cols-6 bg-green-300 w-full'>
-        <div className='m-5'>Name</div>
-        <div className='m-5'>Created</div>
-        <div className='m-5'>Category</div>
-        <div className='m-5 col-span-2'>Content</div>
-        <div className='m-5'>Dates</div>
+      <div className='grid grid-cols-7 bg-green-300 w-full'>
+        <div className='m-3'>Name</div>
+        <div className='m-3'>Created</div>
+        <div className='m-3'>Category</div>
+        <div className='m-3 col-span-2'>Content</div>
+        <div className='m-3'>Dates</div>
       </div>
       {filteredNotes.length !== 0
         ? filteredNotes.map((note) => (

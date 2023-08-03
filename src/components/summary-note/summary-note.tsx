@@ -34,7 +34,7 @@ const SummaryNote: React.FC = () => {
       </div>
 
       {summaryData.map((data: any) => (
-        <div className='grid grid-cols-3 bg-grey-200 w-full' key={data[0]}>
+        <div className='grid grid-cols-3 bg-gray-300 w-full m-3' key={data[0]}>
           <div className='m-3'>{data[0]}</div>
           <div className='m-3'>{data[1].active}</div>
           <div className='m-3'>{data[1].archived}</div>

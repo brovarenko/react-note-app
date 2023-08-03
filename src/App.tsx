@@ -4,7 +4,7 @@ import SummaryNote from './components/summary-note/summary-note';
 
 function App() {
   return (
-    <div className='flex flex-col h-screen m-5'>
+    <div className='flex flex-col h-screen'>
       <NotesList />
       <SummaryNote />
     </div>

@@ -44,7 +44,7 @@ const NotesList: React.FC = () => {
     : notes.filter((note) => !note.archived);
 
   return (
-    <div className='flex flex-col items-center m-20 w-70 bg-gray-300'>
+    <div className='flex flex-col items-center m-20 w-70 bg-gray-200'>
       <button
         className='self-end m-5 px-3 py-2 bg-green-500 text-white rounded cursor-pointer hover:bg-green-600'
         onClick={handleToggleArchived}

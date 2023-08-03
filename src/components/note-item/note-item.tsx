@@ -2,7 +2,6 @@ import React from 'react';
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import { HiArchive } from 'react-icons/hi';
 import { getCategoryIconUrl } from '../../helpers/get-category-url';
-import styles from './styles.module.css';
 
 export interface Note {
   id: number;
@@ -30,27 +29,36 @@ const NoteItem: React.FC<NoteItemProps> = ({
   const { name, createdAt, content, category, dates } = note;
 
   return (
-    <div className={styles.note}>
-      <div className={styles.name}>
+    <div className='grid grid-cols-7 m-3 w-full bg-gray-300'>
+      <div className='lg:flex m-3'>
         <img
-          className={styles.icon}
+          className='w-8 h-8 mr-2'
           src={getCategoryIconUrl(note.category)}
           alt={note.category}
         ></img>
         <div>{name}</div>
       </div>
-      <div>{createdAt}</div>
-      <div>{category}</div>
-      <div>{content}</div>
-      <div>{dates.join(',')}</div>
-      <div className={styles.btnGroup}>
-        <button className={styles.btn} onClick={() => onEdit(note)}>
+      <div className='m-3'>{createdAt}</div>
+      <div className='m-3'>{category}</div>
+      <div className='m-3 col-span-2'>{content}</div>
+      <div className='m-3'>{dates.join(',')}</div>
+      <div className='m-3'>
+        <button
+          className='text-2xl hover:text-gray-500 m-1'
+          onClick={() => onEdit(note)}
+        >
           <AiFillEdit />
         </button>
-        <button className={styles.btn} onClick={() => onArchive(note)}>
+        <button
+          className='text-2xl hover:text-gray-500 m-1'
+          onClick={() => onArchive(note)}
+        >
           <HiArchive />
         </button>
-        <button className={styles.btn} onClick={() => onDelete(note.id)}>
+        <button
+          className='text-2xl hover:text-gray-500 m-1'
+          onClick={() => onDelete(note.id)}
+        >
           <AiFillDelete />
         </button>
       </div>

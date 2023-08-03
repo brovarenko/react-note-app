@@ -1,7 +1,6 @@
 import { useAppSelector } from '../../hooks/use-app-selector.hook';
 import { selectNotes } from '../../store/notes/reducer';
 import { Note } from '../note-item/note-item';
-import styles from './styles.module.css';
 
 const SummaryNote: React.FC = () => {
   const notes = useAppSelector(selectNotes);
@@ -27,18 +26,18 @@ const SummaryNote: React.FC = () => {
   const summaryData = Object.entries(updateSummaryData(notes));
 
   return (
-    <div className={styles.summaryTable}>
-      <div className={styles.summaryHeader}>
-        <div>Note Category</div>
-        <div>Active</div>
-        <div>Archived</div>
+    <div className='flex flex-col items-center m-20 w-70 bg-gray-200'>
+      <div className='grid grid-cols-3 bg-green-300 w-full'>
+        <div className='m-3'>Note Category</div>
+        <div className='m-3'>Active</div>
+        <div className='m-3'>Archived</div>
       </div>
 
       {summaryData.map((data: any) => (
-        <div className={styles.summaryRow} key={data[0]}>
-          <div>{data[0]}</div>
-          <div>{data[1].active}</div>
-          <div>{data[1].archived}</div>
+        <div className='grid grid-cols-3 bg-gray-300 w-full m-3' key={data[0]}>
+          <div className='m-3'>{data[0]}</div>
+          <div className='m-3'>{data[1].active}</div>
+          <div className='m-3'>{data[1].archived}</div>
         </div>
       ))}
     </div>

@@ -3,8 +3,6 @@ import { useAppDispatch } from '../../hooks/use-app-dispatch.hook';
 import { addNote, editNote } from '../../store/notes/reducer';
 import { Note } from '../note-item/note-item';
 
-import styles from './styles.module.css';
-
 interface NoteFormModalProps {
   note: Note | null;
   closeModal: () => void;
@@ -52,24 +50,28 @@ const NoteFormModal: React.FC<NoteFormModalProps> = ({ note, closeModal }) => {
   };
 
   return (
-    <div className={styles.modal}>
-      <div className={styles.modalContent}>
-        <h2>{note ? 'Edit Note' : 'Add Note'}</h2>
-        <form onSubmit={handleSubmit}>
-          <label>Name:</label>
+    <div className='fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center'>
+      <div className='bg-white p-8 rounded-md shadow-md'>
+        <h2 className='mt-0 font-bold'>{note ? 'Edit Note' : 'Add Note'}</h2>
+        <form className='flex flex-col w-60' onSubmit={handleSubmit}>
+          <label className='mb-4'>Name:</label>
           <input
+            className='p-2 mb-5 border border-gray-300 rounded-md'
             type='text'
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
           />
-          <label>Content:</label>
+          <label className='mb-4 '>Content:</label>
           <textarea
+            className='mb-5 border border-gray-300 rounded-md'
+            rows={4}
             value={content}
             onChange={(e) => setContent(e.target.value)}
           />
-          <label>Category:</label>
+          <label className='mb-4'>Category:</label>
           <select
+            className='py-2 mb-5 border border-gray-300 rounded-md'
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           >
@@ -79,10 +81,17 @@ const NoteFormModal: React.FC<NoteFormModalProps> = ({ note, closeModal }) => {
               </option>
             ))}
           </select>
-          <button className={styles.btn} type='submit'>
+          <button
+            className='m-1 px-3 py-2 bg-blue-500 text-white rounded cursor-pointer hover:bg-blue-600'
+            type='submit'
+          >
             {note ? 'Save' : 'Add'}
           </button>
-          <button className={styles.btn} type='button' onClick={closeModal}>
+          <button
+            className='m-1 px-3 py-2 bg-gray-100 text-gray-600 rounded cursor-pointer hover:bg-red-600 hover:text-white'
+            type='button'
+            onClick={closeModal}
+          >
             Cancel
           </button>
         </form>

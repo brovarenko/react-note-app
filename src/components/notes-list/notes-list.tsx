@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import NoteFormModal from '../add-form/note-form';
-import NoteItem, { Note } from '../note-item/note-item';
+import NoteItem from '../note-item/note-item';
 import { useAppSelector } from '../../hooks/use-app-selector.hook';
 import { selectNotes } from '../../store/notes/reducer';
 import { useAppDispatch } from '../../hooks/use-app-dispatch.hook';
 import { deleteNote, archiveNote } from '../../store/notes/reducer';
+import { Note } from '../../store/notes/notes';
 
 const NotesList: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

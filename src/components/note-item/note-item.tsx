@@ -2,18 +2,9 @@ import React from 'react';
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import { HiArchive } from 'react-icons/hi';
 import { getCategoryIconUrl } from '../../helpers/get-category-url';
+import { Note } from '../../store/notes/notes';
 
-export interface Note {
-  id: number;
-  name: string;
-  createdAt: string;
-  content: string;
-  category: string;
-  dates: string[];
-  archived: boolean;
-}
-
-interface NoteItemProps {
+export interface NoteItemProps {
   note: Note;
   onDelete: (id: number) => void;
   onEdit: (note: Note) => void;
@@ -50,7 +41,9 @@ const NoteItem: React.FC<NoteItemProps> = ({
           <AiFillEdit />
         </button>
         <button
-          className='text-2xl hover:text-gray-500 m-1'
+          className={`text-2xl hover:text-gray-500 m-1 ${
+            note.archived ? 'text-green-500' : ''
+          }`}
           onClick={() => onArchive(note)}
         >
           <HiArchive />

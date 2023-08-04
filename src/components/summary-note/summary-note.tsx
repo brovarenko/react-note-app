@@ -1,6 +1,6 @@
 import { useAppSelector } from '../../hooks/use-app-selector.hook';
 import { selectNotes } from '../../store/notes/reducer';
-import { Note } from '../note-item/note-item';
+import { Note } from '../../store/notes/notes';
 
 const SummaryNote: React.FC = () => {
   const notes = useAppSelector(selectNotes);

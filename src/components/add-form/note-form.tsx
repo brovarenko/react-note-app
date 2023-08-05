@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useAppDispatch } from '../../hooks/use-app-dispatch.hook';
 import { addNote, editNote } from '../../store/notes/reducer';
-import { Note } from '../note-item/note-item';
+import { Note } from '../../store/notes/notes';
 
-interface NoteFormModalProps {
+export interface NoteFormModalProps {
   note: Note | null;
   closeModal: () => void;
 }
